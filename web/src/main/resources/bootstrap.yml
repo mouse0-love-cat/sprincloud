@@ -1,0 +1,33 @@
+server:
+  port: 8020
+spring:
+  application:
+    name: webtest
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+      discovery:
+        server-addr: 127.0.0.1:8848
+nacos:
+  name: test
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8010/eureka/,http://localhost:8011/eureka/
+#    healthcheck:
+#      enabled: true
+#  instance:
+#    prefer-ip-address: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*' #公开所有端点 公开后admin将会实时监测到
+  endpoint:
+    health:
+      show-details: always #展示所有健康状态 公开后admin将会实时监测到

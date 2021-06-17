@@ -1,0 +1,27 @@
+server:
+  port: 8031
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8010/eureka/,http://localhost:8011/eureka/
+#    healthcheck:
+#      enabled: true
+#  instance:
+#    prefer-ip-address: true
+spring:
+  application:
+    name: admin
+  thymeleaf:
+    check-template: false
+    check-template-location: false
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+logging:
+  level:
+    root: warn

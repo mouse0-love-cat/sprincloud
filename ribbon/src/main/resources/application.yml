@@ -1,0 +1,41 @@
+server:
+  port: 8030
+
+spring:
+  application:
+    name: ribbon
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+      retry:
+        enabled: true #开启断路器重试机制
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+web-test:
+  ribbon:
+    ConnectTimeout: 250 #请求连接超时时间
+    ReadTimeout: 1000 #请求处理超时时间
+    OkToRetryOnAllOperations: true #所有请求都进行重试
+    MaxAutoRetriesNextServer: 2 #切换实例的重试次数
+    MaxAutoRetries: 1 #重试实例次数
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8010/eureka/
+#    healthcheck:
+#      enabled: true #健康检查 默认true
+#  instance:
+#    prefer-ip-address: true
+#actuator健康检查端点配置
+#    status-page-url: ${management.context-path}/info
+#    status-page-url-path: ${management.context-path}/health
+#management:
+#  context-path: /actuator
+ribbon:
+  http:
+    client:
+      enabled: true #本项目使用http请求 顾开启http重试机制\
+

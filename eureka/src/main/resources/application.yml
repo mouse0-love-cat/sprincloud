@@ -1,0 +1,23 @@
+server:
+  port: 8010
+
+spring:
+  application:
+    name: eureka
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+#    lease-renewal-interval-in-seconds: 30 #服务续约时间 默认30s
+#    lease-expiration-duration-in-seconds: 90 #服务失效时间 默认90s
+  client:
+#    register-with-eureka: false  #禁止注册自己
+#    fetch-registry: false  #表示自己端就是注册中心，不需要去检索服务
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enable-self-preservation: false #开启保护机制 默认开启 关闭将会将不可用实例剔除
